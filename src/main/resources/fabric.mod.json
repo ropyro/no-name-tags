@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "no-name-tags",
+	"version": "${version}",
+
+	"name": "No Name Tags",
+	"description": "Disable the rendering of name tags",
+	"authors": [
+		"Space Walker"
+	],
+	"contributors": [
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/no-name-tags",
+		"sources": "https://github.com/SpaceWalkerRS/no-name-tags",
+		"issues": "https://github.com/SpaceWalkerRS/no-name-tags/issues"
+	},
+
+	"license": "MIT Licence",
+
+	"environment": "*",
+	"entrypoints": {
+	},
+	"mixins": [
+		"no-name-tags.mixins.json"
+	],
+
+	"depends": {
+	},
+	"breaks": {
+	},
+	"suggests": {
+	},
+
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/EJC9zkX"
+			}
+		}
+	}
+}
