@@ -31,19 +31,19 @@ public class KeyboardMixin {
                 NoNameTags.hideNameTags = !NoNameTags.hideNameTags;
                 if (client.player != null) {
                     String state = NoNameTags.hideNameTags ? "disabled" : "enabled";
-                    client.player.sendMessage(Text.of("Name tag rendering has been " + state + " !"), true);
+                    client.player.sendMessage(Text.of("Name tag rendering has been " + state + "!"), true);
                 }
             } else if (NoNameTags.keyHideHotBar.matchesKey(key, scancode)) {
                 NoNameTags.hideHotBar = !NoNameTags.hideHotBar;
                 if (client.player != null) {
                     String state = NoNameTags.hideHotBar ? "disabled" : "enabled";
-                    client.player.sendMessage(Text.of("Hot bar rendering has been " + state + " !"), true);
+                    client.player.sendMessage(Text.of("Hot bar rendering has been " + state + "!"), true);
                 }
             } else if (NoNameTags.keyHideFire.matchesKey(key, scancode)) {
                 NoNameTags.hideFire = !NoNameTags.hideFire;
                 if (client.player != null) {
                     String state = NoNameTags.hideFire ? "disabled" : "enabled";
-                    client.player.sendMessage(Text.of("Fire rendering has been " + state + " !"), true);
+                    client.player.sendMessage(Text.of("Fire rendering has been " + state + "!"), true);
                 }
             }
         }
