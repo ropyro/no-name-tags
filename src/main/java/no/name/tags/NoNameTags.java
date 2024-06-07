@@ -1,10 +1,22 @@
 package no.name.tags;
 
-import net.minecraft.client.KeyMapping;
+import net.fabricmc.api.ModInitializer;
 
-public class NoNameTags {
+import net.minecraft.client.option.KeyBinding;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-	public static KeyMapping keyHideNameTags;
+public class NoNameTags implements ModInitializer {
+
+	public static final Logger LOGGER = LoggerFactory.getLogger("no-name-tags");
+	public static KeyBinding keyHideNameTags;
 	public static boolean hideNameTags;
 
+	public static KeyBinding keyHideHotBar;
+	public static boolean hideHotBar;
+
+	@Override
+	public void onInitialize() {
+		LOGGER.info("No name tags initialized!");
+	}
 }

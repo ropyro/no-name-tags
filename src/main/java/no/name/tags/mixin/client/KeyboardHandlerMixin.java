@@ -1,5 +1,9 @@
 package no.name.tags.mixin.client;
 
+import net.minecraft.client.Keyboard;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
+import no.name.tags.NoNameTags;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -8,34 +12,31 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import net.minecraft.client.KeyboardHandler;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-
-import no.name.tags.NoNameTags;
-
-@Mixin(KeyboardHandler.class)
+@Mixin(Keyboard.class)
 public class KeyboardHandlerMixin {
 
-	@Shadow @Final private Minecraft minecraft;
+	@Shadow @Final private MinecraftClient client;
 
 	@Inject(
-		method = "keyPress",
-		at = @At(
-			value = "HEAD"
-		)
+			method = "onKey",
+			at = @At(
+					value = "HEAD"
+			)
 	)
-	private void onKeyPress(long window, int key, int scancode, int action, int mods, CallbackInfo ci) {
-		if (minecraft.getWindow().getWindow() == window) {
-			if (action != GLFW.GLFW_RELEASE && NoNameTags.keyHideNameTags.matches(key, scancode)) {
+	public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo ci) {
+		if (client.getWindow().getHandle() == window) {
+			if (action != GLFW.GLFW_RELEASE && NoNameTags.keyHideNameTags.matchesKey(key, scancode)) {
 				NoNameTags.hideNameTags = !NoNameTags.hideNameTags;
-
-				if (minecraft.player != null) {
+				if (client.player != null) {
 					String state = NoNameTags.hideNameTags ? "disabled" : "enabled";
-					Component message = new TextComponent(String.format("Name tag rendering has been %s!", state));
-
-					minecraft.player.displayClientMessage(message, true);
+					client.player.sendMessage(Text.of("Name tag rendering has been " + state + " !"), true);
+				}
+			} else
+			if (action != GLFW.GLFW_RELEASE && NoNameTags.keyHideHotBar.matchesKey(key, scancode)) {
+				NoNameTags.hideHotBar = !NoNameTags.hideHotBar;
+				if (client.player != null) {
+					String state = NoNameTags.hideHotBar ? "disabled" : "enabled";
+					client.player.sendMessage(Text.of("Hot bar rendering has been " + state + " !"), true);
 				}
 			}
 		}

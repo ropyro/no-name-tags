@@ -1,27 +1,27 @@
 package no.name.tags.mixin.client;
 
+import net.minecraft.client.render.entity.LivingEntityRenderer;
+import net.minecraft.entity.LivingEntity;
+import no.name.tags.NoNameTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import net.minecraft.client.renderer.entity.EntityRenderer;
-
-import no.name.tags.NoNameTags;
-
-@Mixin(EntityRenderer.class)
-public class EntityRendererMixin {
+@Mixin(LivingEntityRenderer.class)
+public class EntityRendererMixin<T extends LivingEntity> {
 
 	@Inject(
-		method = "renderNameTag",
-		cancellable = true,
-		at = @At(
-			value = "HEAD"
-		)
+			method = "hasLabel",
+			cancellable = true,
+			at = @At(
+					value = "HEAD"
+			)
 	)
-	private void cancelRenderNameTag(CallbackInfo ci) {
+	protected void hasLabel(T livingEntity, CallbackInfoReturnable<Boolean> info) {
 		if (NoNameTags.hideNameTags) {
-			ci.cancel();
+			info.setReturnValue(false);
+			info.cancel();
 		}
 	}
 }
