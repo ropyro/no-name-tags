@@ -1,6 +1,6 @@
 # no-name-tags
 
-Updated to Minecraft version 1.20.1 by ropyro
+Updated to Minecraft version 1.20.1 from 1.16.5 by ropyro
 
 Enable/disable rendering of player nametags with default keybind F6
 
