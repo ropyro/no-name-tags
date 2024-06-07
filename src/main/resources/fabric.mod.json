@@ -2,7 +2,6 @@
 	"schemaVersion": 1,
 	"id": "no-name-tags",
 	"version": "${version}",
-
 	"name": "No Name Tags",
 	"description": "Disable the rendering of name tags",
 	"authors": [
@@ -26,6 +25,10 @@
 	],
 
 	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
 	},
 	"breaks": {
 	},
