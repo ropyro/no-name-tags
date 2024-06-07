@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(InGameHud.class)
-public class InGameGuiMixin {
+public class InGameHudMixin {
 
     @Inject(method = "renderHotbar", cancellable = true, at = @At(value = "HEAD"))
     private void renderHotbar(float tickDelta, DrawContext context, CallbackInfo info) {

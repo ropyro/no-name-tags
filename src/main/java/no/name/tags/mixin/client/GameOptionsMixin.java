@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Mixin(GameOptions.class)
-public class OptionsMixin {
+public class GameOptionsMixin {
 
 	@Shadow @Final @Mutable private KeyBinding[] allKeys;
 

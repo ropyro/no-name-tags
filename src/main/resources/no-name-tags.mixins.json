@@ -3,10 +3,10 @@
 	"minVersion": "0.8",
 	"package": "no.name.tags.mixin",
 	"client": [
-		"client.EntityRendererMixin",
-		"client.KeyboardHandlerMixin",
-		"client.OptionsMixin",
-		"client.InGameGuiMixin"
+		"client.LivingEntityRendererMixin",
+		"client.KeyboardMixin",
+		"client.GameOptionsMixin",
+		"client.InGameHudMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
