@@ -10,7 +10,7 @@ Enable/disable rendering of the hotbar, health, XP, and armor info with default 
 Install Instructions:
 
 - Install FabricMC for Minecraft 1.20.1 https://fabricmc.net/
-- Download captcha-chime.jar from the releases page
+- Download no-name-tags.jar from the releases page
 - Navigate to /.minecraft/ folder
 - Place captcha-chime-1.20.1 in your mods folder (create mods folder if it does not exist)
 - Enjoy!
