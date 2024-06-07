@@ -5,7 +5,8 @@
 	"client": [
 		"client.EntityRendererMixin",
 		"client.KeyboardHandlerMixin",
-		"client.OptionsMixin"
+		"client.OptionsMixin",
+		"client.InGameGuiMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
