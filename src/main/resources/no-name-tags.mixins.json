@@ -6,7 +6,8 @@
 		"client.LivingEntityRendererMixin",
 		"client.KeyboardMixin",
 		"client.GameOptionsMixin",
-		"client.InGameHudMixin"
+		"client.InGameHudMixin",
+		"client.InGameOverlayRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

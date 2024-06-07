@@ -15,6 +15,9 @@ public class NoNameTags implements ModInitializer {
 	public static KeyBinding keyHideHotBar;
 	public static boolean hideHotBar;
 
+	public static KeyBinding keyHideFire;
+	public static boolean hideFire;
+
 	@Override
 	public void onInitialize() {
 		LOGGER.info("No name tags initialized!");

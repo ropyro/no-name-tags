@@ -30,14 +30,16 @@ public class GameOptionsMixin {
 	)
 	private void registerKeyMapping(CallbackInfo ci) {
 		// Check if the key binding is already initialized
-		if (NoNameTags.keyHideNameTags == null && NoNameTags.keyHideHotBar == null) {
+		if (NoNameTags.keyHideNameTags == null && NoNameTags.keyHideHotBar == null && NoNameTags.keyHideFire == null) {
 			NoNameTags.keyHideNameTags = new KeyBinding("Hide Nametags", GLFW.GLFW_KEY_F6, "key.categories.misc");
 			NoNameTags.keyHideHotBar = new KeyBinding("Hide Hotbar", GLFW.GLFW_KEY_F7, "key.categories.misc");
+			NoNameTags.keyHideFire = new KeyBinding("Hide Fire", GLFW.GLFW_KEY_F8, "key.categories.misc");
 
 			// Create a list to store the key bindings
 			List<KeyBinding> keyBindings = new ArrayList<>(Arrays.asList(allKeys));
 			keyBindings.add(NoNameTags.keyHideHotBar);
 			keyBindings.add(NoNameTags.keyHideNameTags);
+			keyBindings.add(NoNameTags.keyHideFire);
 
 			// Update the allKeys array
 			allKeys = keyBindings.toArray(new KeyBinding[0]);
@@ -45,6 +47,7 @@ public class GameOptionsMixin {
 			// Register the new key bindings
 			KeyBindingHelper.registerKeyBinding(NoNameTags.keyHideHotBar);
 			KeyBindingHelper.registerKeyBinding(NoNameTags.keyHideNameTags);
+			KeyBindingHelper.registerKeyBinding(NoNameTags.keyHideFire);
 		}
 	}
 }

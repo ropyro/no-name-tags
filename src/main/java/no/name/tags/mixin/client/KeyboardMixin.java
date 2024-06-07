@@ -15,30 +15,37 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Keyboard.class)
 public class KeyboardMixin {
 
-	@Shadow @Final private MinecraftClient client;
+    @Shadow
+    @Final
+    private MinecraftClient client;
 
-	@Inject(
-			method = "onKey",
-			at = @At(
-					value = "HEAD"
-			)
-	)
-	public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo ci) {
-		if (client.getWindow().getHandle() == window) {
-			if (action != GLFW.GLFW_RELEASE && NoNameTags.keyHideNameTags.matchesKey(key, scancode)) {
-				NoNameTags.hideNameTags = !NoNameTags.hideNameTags;
-				if (client.player != null) {
-					String state = NoNameTags.hideNameTags ? "disabled" : "enabled";
-					client.player.sendMessage(Text.of("Name tag rendering has been " + state + " !"), true);
-				}
-			} else
-			if (action != GLFW.GLFW_RELEASE && NoNameTags.keyHideHotBar.matchesKey(key, scancode)) {
-				NoNameTags.hideHotBar = !NoNameTags.hideHotBar;
-				if (client.player != null) {
-					String state = NoNameTags.hideHotBar ? "disabled" : "enabled";
-					client.player.sendMessage(Text.of("Hot bar rendering has been " + state + " !"), true);
-				}
-			}
-		}
-	}
+    @Inject(
+            method = "onKey",
+            at = @At(
+                    value = "HEAD"
+            )
+    )
+    public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo ci) {
+        if (client.getWindow().getHandle() == window) {
+            if (action != GLFW.GLFW_RELEASE && NoNameTags.keyHideNameTags.matchesKey(key, scancode)) {
+                NoNameTags.hideNameTags = !NoNameTags.hideNameTags;
+                if (client.player != null) {
+                    String state = NoNameTags.hideNameTags ? "disabled" : "enabled";
+                    client.player.sendMessage(Text.of("Name tag rendering has been " + state + " !"), true);
+                }
+            } else if (action != GLFW.GLFW_RELEASE && NoNameTags.keyHideHotBar.matchesKey(key, scancode)) {
+                NoNameTags.hideHotBar = !NoNameTags.hideHotBar;
+                if (client.player != null) {
+                    String state = NoNameTags.hideHotBar ? "disabled" : "enabled";
+                    client.player.sendMessage(Text.of("Hot bar rendering has been " + state + " !"), true);
+                }
+            } else if (action != GLFW.GLFW_RELEASE && NoNameTags.keyHideFire.matchesKey(key, scancode)) {
+                NoNameTags.hideFire = !NoNameTags.hideFire;
+                if (client.player != null) {
+                    String state = NoNameTags.hideFire ? "disabled" : "enabled";
+                    client.player.sendMessage(Text.of("Fire rendering has been " + state + " !"), true);
+                }
+            }
+        }
+    }
 }
